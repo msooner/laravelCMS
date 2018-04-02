@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'ONEPASS_ID' =>env('ONEPASS_ID','b021c052e8af0405c3a5342a824e397c'),
+    'PRIVATE_KEY' =>env('PRIVATE_KEY','e70a507b7d7fd4ecb34f31cc6d42bea9'),
 
     /*
     |--------------------------------------------------------------------------
@@ -12,7 +14,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Inkebj'),
+    'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -64,7 +66,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -140,6 +142,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        Silber\Bouncer\BouncerServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -162,7 +165,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -191,7 +194,7 @@ return [
     */
 
     'aliases' => [
-
+        'Bouncer' => Silber\Bouncer\BouncerFacade::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
@@ -225,7 +228,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

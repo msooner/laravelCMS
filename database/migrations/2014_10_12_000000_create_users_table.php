@@ -14,12 +14,13 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id')->index();
-            $table->string('name',30);
-            $table->string('email',100)->unique();
-            $table->string('password',64);
-            $table->rememberToken();
-            $table->timestamps();
+            $table->increments('uid');
+            $table->string('user_name')->default('PUPU');
+            $table->string('phone_num')->unique();
+          //  $table->string('phone_num')->default('NULL');
+            $table->string('email')->default('NULL');
+            $table->string('avatar')->default('http://api.pupupula.cn/uploads/applogo108108.png');
+           
         });
     }
 

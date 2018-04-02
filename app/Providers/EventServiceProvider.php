@@ -13,9 +13,12 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
-            'App\Listeners\EventListener',
-        ],
+//        'App\Events\Event' => [
+//            'App\Listeners\EventListener',
+//        ],
+        'App\Events\RegisterEvent' => [
+            'App\Listeners\SendRegisterNotification',
+        ]
     ];
 
     /**
@@ -26,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
+//        Event::listen('event.*', function (array $data) {
+//            //
+//        });
 
         //
     }

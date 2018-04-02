@@ -25,6 +25,13 @@ $app = new Illuminate\Foundation\Application(
 | incoming requests to this application from both the web and CLI.
 |
 */
+#$app->configureMonologUsing(function($monolog) {
+#
+#    $manager = new MongoDB\Driver\Manager();
+#    $handler = new Monolog\Handler\MongoDBHandler($manager, "PU","error_logs");
+#    $monolog->pushHandler($handler);
+#
+#});
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
@@ -40,6 +47,7 @@ $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
 );
+
 
 /*
 |--------------------------------------------------------------------------

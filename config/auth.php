@@ -42,8 +42,12 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'users',
+        ],
+        'PUPU' => [
+            'driver' => 'session',
+            'provider' => 'superusers',
         ],
     ],
 
@@ -74,6 +78,14 @@ return [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
+        'superusers' => [
+            'driver' => 'eloquent',
+            'model' => App\SuperUser::class,
+        ],
+        'api' => [
+            'driver' => 'eloquent',
+            'model' => App\SuperUser::class,
+        ],
     ],
 
     /*

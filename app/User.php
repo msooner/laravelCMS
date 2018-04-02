@@ -14,8 +14,11 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = 'users';
+    public $timestamps = false;
+    protected $primaryKey = 'uid';
     protected $fillable = [
-        'name', 'email', 'password',
+        'user_name', 'email', 'phone_num'
     ];
 
     /**
@@ -23,27 +26,22 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
-    protected $table = 'users';
-    protected $primaryKey='id';
-    public $timestamps=false;
 
-    public function show()
+
+    public function getJWTIdentifier()
     {
-        $users = User::all()->toArray();
-
-        return $users;
+        return $this->getKey();
     }
 
-    public function edit($id)
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
     {
-        $users = User::where('id',$id)->get()->toarray();
-
-        return $users;
+        return [];
     }
-
 
 
 }
