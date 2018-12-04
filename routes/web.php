@@ -94,3 +94,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin','middleware' => 'PUP
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

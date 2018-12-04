@@ -40,15 +40,6 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
-        'api' => [
-            'driver' => 'jwt',
-            'provider' => 'users',
-        ],
-        'PUPU' => [
-            'driver' => 'session',
-            'provider' => 'superusers',
-        ],
     ],
 
     /*
@@ -72,19 +63,6 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
-        ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
-        'superusers' => [
-            'driver' => 'eloquent',
-            'model' => App\SuperUser::class,
-        ],
-        'api' => [
-            'driver' => 'eloquent',
-            'model' => App\SuperUser::class,
         ],
     ],
 

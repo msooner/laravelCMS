@@ -1,69 +1,52 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-@section('content')
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>后台登录</title>
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/page.css')}}">
+</head>
+<body>
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
+        <div class="col-sm-6 col-md-4 col-md-offset-4 main">
+            <h1 class="text-center login-title">后台登录</h1>
+            <div class="account-wall">
+                <img class="profile-img" src="{{asset('img/backend.png')}}" alt="">
+                <form class="form-signin" action="{{route('login')}}" method="POST">
+                  {{csrf_field()}}
+                    <div class="item"{{ $errors->has('email') ? ' has-error' : '' }}>
+                        <input id="email" type="email" class="form-control" name="email"
+                               value="{{ old('email') }}" placeholder="邮箱" required autofocus>
+                        @if ($errors->has('email'))
+                            <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
+                        @endif
+                    </div>
+                    <div class="item">
+                        <input id="password" type="password" class="form-control" name="password" placeholder="密码"
+                               required>
+                        @if ($errors->has('password'))
+                            <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                        @endif
+                    </div>
+                    <div class="item">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">立即登录</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
-@endsection
+</div>
+<script src="//captcha.luosimao.com/static/dist/api.js"></script>
+<script src="{{asset('js/jquery.min.js')}}"></script>
+
+{{--<script src="https://captcha.luosimao.com/static/js/api.js"></script>--}}
+</body>
+</html>
